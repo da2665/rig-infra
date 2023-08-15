@@ -14,3 +14,8 @@ Resources:
     Properties:
       AccessControl: Private
       BucketName: !Sub "rig-app-bucket${Environment}"
+  RigAppVersionParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+         Type: String
+         Value: "1.0.0"
