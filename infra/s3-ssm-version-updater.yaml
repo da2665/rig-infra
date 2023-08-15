@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  Environment:
+    Type: String
+    AllowedValues:
+      - prod
+      - stg
+      - dev
+
+Resources:
+  RigAppBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: !Sub "rig-app-bucket${Environment}"
