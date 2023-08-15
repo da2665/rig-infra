@@ -7,6 +7,9 @@ Parameters:
       - prod
       - stg
       - dev
+  RigVersion:
+    Type: String
+    Default: "1.0.0"
 
 Resources:
   RigAppBucket:
@@ -18,4 +21,4 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
          Type: String
-         Value: "1.0.0"
+         Value: !Ref RigVersion
