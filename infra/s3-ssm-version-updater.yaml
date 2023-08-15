@@ -16,9 +16,11 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: Private
-      BucketName: !Sub "rig-app-bucket${Environment}"
+      BucketName: !Sub "rig-app-bucket-${Environment}"
+
   RigAppVersionParameter:
     Type: AWS::SSM::Parameter
     Properties:
-         Type: String
-         Value: !Ref RigVersion
+      Name: !Sub "rig-version-${Environment}"
+      Type: String
+      Value: !Ref RigVersion
