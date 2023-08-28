@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  Environment:
+    Type: String
+    AllowedValues:
+      - prod
+      - stg
+      - dev
+  RigVersion:
+    Type: String
+    Default: "1.0.0"
+
+Resources:
+  RigAppBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: !Sub "rig-app-bucket-${Environment}"
+
+  RigAppVersionParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub "rig-version-${Environment}"
+      Type: String
+      Value: !Ref RigVersion

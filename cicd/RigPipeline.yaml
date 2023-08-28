@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: AWS CodePipeline for Rig Chat Application - Swipe Tech
+
+Parameters:
+  AppName:
+    Type: String
+    Default: Rig
+
+  Environment:
+    Type: String
+    AllowedValues:
+      - prod
+      - stg
+      - dev
+      
+Resources:
+  RigArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: !Sub ${AppName}-ArtifactsBucket-${Environment}
+
+  RigCodePipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Sub ${AppName}-Pipeline-${Environment}
+      RoleArn: 
+      ArtifactStore:
+        Type: S3
+        Location: 
+      Stages: 
+        - 
+          Name: name
+          Actions:
+            - actions
+          Blockers:
+            - blockers
+      RestartExecutionOnUpdate: true
